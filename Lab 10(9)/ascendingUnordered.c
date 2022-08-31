@@ -1,6 +1,6 @@
-
+// Ascending priority queue
 #include <stdio.h>
-#define MAXQUEUE 10
+#define MAXQUEUE 5
 struct queue
 {
     int items[MAXQUEUE];
@@ -11,7 +11,7 @@ int isEmpty(Queue *);
 int isFull(Queue *);
 void enqueue(Queue *, int item);
 int dequeue(Queue *);
-int peek(Queue *, int item);
+int peek(Queue *);
 void traverse(Queue *);
 int main()
 {
@@ -23,7 +23,7 @@ int main()
     int num, el;
     do
     {
-        printf("\n********************Ascending Ordered Priority Queue****************\n");
+        printf("\n********************Ascending Unordered Priority Queue****************\n");
         printf("1.Insert element\n2.Delete element\n3.Traverse\n4.Exit\n");
         scanf("%d", &num);
         switch (num)
@@ -67,6 +67,7 @@ void traverse(Queue *q)
 
     else
     {
+        printf("Traversing queue:");
         int i;
         for (i = q->front; i <= q->rear; i++)
         {
@@ -74,56 +75,39 @@ void traverse(Queue *q)
         }
     }
 }
-int peek(Queue *q, int item)
-{
-    int i;
-    for (i = q->front; i <= q->rear; i++)
-    {
-        if (item < q->items[i])
-        {
-            return i;
-        }
-    }
-    return -1;
-}
 void enqueue(Queue *q, int item)
 {
-    int i, index, temp;
-    if (q->front == 0 && q->rear == -1)
-    {
-        q->rear++;
-        q->items[q->rear] = item;
-        traverse(q);
-    }
-
-    else if (!isFull(q))
-    {
-        index = peek(q, item);
-        q->rear++;
-
-        if (index == -1)
-        {
-            q->items[q->rear] = item;
-            return;
-        }
-        for (i = q->rear; i >= index; i--)
-        {
-            // Shift elements one step right
-            q->items[i + 1] = q->items[i];
-        }
-        q->items[index] = item;
-    }
-
+    if (!isFull(q))
+        q->items[++q->rear] = item;
     else
         printf("Queue overflow\n");
 }
-
+int peek(Queue *q)
+{
+    int i, highest = q->items[q->front], position;
+    for (i = q->front; i <= q->rear; i++)
+    {
+        if (highest < q->items[i])
+        {
+            highest = q->items[i];
+            position = i;
+        }
+    }
+    return position;
+}
 int dequeue(Queue *q)
 {
-    int i, ind;
+    int i, ind, del;
+    ind = peek(q);
+    del = q->items[ind];
     if (!isEmpty(q))
     {
-        return q->items[q->front++];
+        for (i = ind; i < q->rear; q++)
+        {
+            q->items[i] = q->items[i + 1];
+        }
+        q->rear--;
+        return del;
     }
 
     else

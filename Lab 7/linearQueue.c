@@ -1,6 +1,9 @@
+// LINEAR QUEUE
+
+// FIRST IN FIRST OUT
 
 #include <stdio.h>
-#define MAXQUEUE 10
+#define MAXQUEUE 5
 struct queue
 {
     int items[MAXQUEUE];
@@ -9,22 +12,23 @@ struct queue
 typedef struct queue Queue;
 int isEmpty(Queue *);
 int isFull(Queue *);
+void makeEmpty(Queue *);
 void enqueue(Queue *, int item);
 int dequeue(Queue *);
-int peek(Queue *, int item);
 void traverse(Queue *);
 int main()
 {
     Queue q;
 
+    // INITIAL EMPTY STATE
     q.front = 0;
     q.rear = -1;
 
     int num, el;
     do
     {
-        printf("\n********************Ascending Ordered Priority Queue****************\n");
-        printf("1.Insert element\n2.Delete element\n3.Traverse\n4.Exit\n");
+        printf("\n********************LINEAR QUEUE OPERATIONS****************\n");
+        printf("1.Insert element\n2.Delete element\n3.Make queue empty\n4.Check if queue is empty\n5.Check if queue is full\n6.Traverse\n7.Exit\n");
         scanf("%d", &num);
         switch (num)
         {
@@ -37,10 +41,26 @@ int main()
             printf("Element removed:%d", dequeue(&q));
             break;
         case 3:
+            makeEmpty(&q);
+            printf("Queue is now empty\n");
+            break;
+        case 4:
+            if (isEmpty(&q))
+                printf("Queue is empty");
+            else
+                printf("Queue is not empty");
+            break;
+        case 5:
+            if (isFull(&q))
+                printf("Queue is full");
+            else
+                printf("Queue is not full");
+            break;
+        case 6:
             traverse(&q);
             break;
         }
-    } while (num != 4);
+    } while (num != 7);
     return 0;
 }
 int isEmpty(Queue *q)
@@ -67,6 +87,7 @@ void traverse(Queue *q)
 
     else
     {
+        printf("Traversing queue:");
         int i;
         for (i = q->front; i <= q->rear; i++)
         {
@@ -74,58 +95,17 @@ void traverse(Queue *q)
         }
     }
 }
-int peek(Queue *q, int item)
-{
-    int i;
-    for (i = q->front; i <= q->rear; i++)
-    {
-        if (item < q->items[i])
-        {
-            return i;
-        }
-    }
-    return -1;
-}
 void enqueue(Queue *q, int item)
 {
-    int i, index, temp;
-    if (q->front == 0 && q->rear == -1)
-    {
-        q->rear++;
-        q->items[q->rear] = item;
-        traverse(q);
-    }
-
-    else if (!isFull(q))
-    {
-        index = peek(q, item);
-        q->rear++;
-
-        if (index == -1)
-        {
-            q->items[q->rear] = item;
-            return;
-        }
-        for (i = q->rear; i >= index; i--)
-        {
-            // Shift elements one step right
-            q->items[i + 1] = q->items[i];
-        }
-        q->items[index] = item;
-    }
-
+    if (!isFull(q))
+        q->items[++q->rear] = item;
     else
         printf("Queue overflow\n");
 }
-
 int dequeue(Queue *q)
 {
-    int i, ind;
     if (!isEmpty(q))
-    {
         return q->items[q->front++];
-    }
-
     else
         printf("Queue is empty\n");
     return 0;
