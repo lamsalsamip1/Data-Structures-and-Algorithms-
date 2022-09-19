@@ -23,7 +23,7 @@ int main()
     while (choice != 8)
     {
         printf("\n\n**************DOUBLY LINKED LIST***********************\n");
-        printf("1.Insert element at beginning.\n2.Insert element at end.\n3.Insert element at desired position.\n4.Delete first element.\n5.Delete last element.\n6.Delete element of desired positon.\n7.Display all items.\n8.Search element.\n9.Exit\n");
+        printf("1.Insert element at beginning.\n2.Insert element at end.\n3.Insert element at desired position.\n4.Delete first element.\n5.Delete last element.\n6.Delete element of desired positon.\n7.Display all items.\n8.Exit\n");
 
         printf("Enter your choice: ");
         scanf("%d", &choice);
