@@ -17,7 +17,6 @@ SPACE COMPLEXITY:
 
 */
 #include <stdio.h>
-#include <stdbool.h>
 #define N 10
 void selectionSort(int arr[], int length);
 void display(int arr[], int length);
