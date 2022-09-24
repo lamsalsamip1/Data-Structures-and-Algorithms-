@@ -1,4 +1,4 @@
-// Implement stack using linked list
+// Implement stack using singly linked list
 #include <stdio.h>
 #include <stdlib.h>
 struct node
