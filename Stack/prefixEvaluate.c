@@ -19,7 +19,7 @@ int main()
 {
     int option, input;
     prestack.top = -1, resultstack.top = -1;
-    printf("Enter the postfix operation:");
+    printf("Enter the prefix operation:");
     gets(prestack.items);
     printf("Result:%d", evaluatePre());
     return 0;
