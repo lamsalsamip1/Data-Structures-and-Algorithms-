@@ -1,3 +1,5 @@
+// Implementation of binary search
+
 #include <stdio.h>
 #define N 5
 int binarySearch(int arr[], int length, int key);
