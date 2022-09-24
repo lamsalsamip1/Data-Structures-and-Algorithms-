@@ -1,4 +1,4 @@
-// Descending unordered priority queue
+// Descending ordered priority queue
 #include <stdio.h>
 #define MAXQUEUE 10
 struct queue
