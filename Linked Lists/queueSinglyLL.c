@@ -1,4 +1,4 @@
-// Implement queue using linked list
+// Implement queue using singly linked list
 #include <stdio.h>
 #include <stdlib.h>
 struct node
