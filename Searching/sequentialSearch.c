@@ -1,3 +1,5 @@
+// Implementation of linear (sequential) search
+
 #include <stdio.h>
 #define N 5
 int linearSearch(int arr[], int length, int key);
