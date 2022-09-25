@@ -1,6 +1,13 @@
 /*
 MERGE SORT: Divide and conquer, divide into smallest array and merge them by sorting
 
+TIME COMPLEXITY : Best Case Complexity: O(n*log n)
+
+                  Worst Case Complexity: O(n*log n)
+
+                  Average Case Complexity: O(n*log n)
+
+SPACE COMPLEXITY: O(n)
 */
 #include <stdio.h>
 #define N 10
