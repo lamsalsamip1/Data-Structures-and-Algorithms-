@@ -124,8 +124,9 @@ void *delete_at_beg()
     else
     {
         hold = head;
-        head->prev = NULL;
+
         head = head->next;
+        head->prev = NULL;
         // printf("head = %d", head->next->info);
 
         free(hold);
