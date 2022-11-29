@@ -56,19 +56,19 @@ int evaluatePre()
             switch (symbol)
             {
             case '+':
-                push(&resultstack, a + b);
+                push(&resultstack, b+a);
                 break;
             case '-':
-                push(&resultstack, a - b);
+                push(&resultstack, b-a);
                 break;
             case '/':
-                push(&resultstack, a / b);
+                push(&resultstack, b/a);
                 break;
             case '*':
-                push(&resultstack, a * b);
+                push(&resultstack, b*a);
                 break;
             case '^':
-                push(&resultstack, pow(a, b));
+                push(&resultstack, pow(b, a));
                 break;
             }
         }
